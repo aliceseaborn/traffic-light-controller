@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{ragged2e}
+\usepackage{amsmath}    	% Expanded math operations for papers
+\usepackage{amssymb}
+\usepackage{esvect}    	% Vector notation for mathematics
+\usepackage{graphicx}
+\usepackage{wrapfig}    	% Format figures more appropriately
+\usepackage{hyperref}   	% Enable hyperlink support
+\usepackage{fancyhdr}   	% Allow headers and footers customized
+\usepackage{titlesec}   	% Allow customization of section headers
+\usepackage{wrapfig}    	% So I can wrap figures around my text
+\usepackage{enumitem}	% Align things in the itemize environment
+\usepackage{xcolor}		% Colored text
+\usepackage{subcaption}
+\usepackage[font=small,skip=0pt]{caption}
+
+% SI Unit setup
+\usepackage{siunitx}
+\sisetup{unitsep=\cdot}
+
+% Verilog Programming
+\usepackage{listings}
+
+\definecolor{vgreen}{RGB}{104,180,104}
+\definecolor{vblue}{RGB}{49,49,255}
+\definecolor{vorange}{RGB}{255,143,102}
+
+\lstdefinestyle{verilog}
+{
+    language=Verilog,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{vblue},
+    identifierstyle=\color{black},
+    commentstyle=\color{vgreen},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    numbersep=10pt,
+    tabsize=8,
+    moredelim=*[s][\colorIndex]{[}{]},
+    literate=*{:}{:}1
+}
+
+\makeatletter
+\newcommand*\@lbracket{[}
+\newcommand*\@rbracket{]}
+\newcommand*\@colon{:}
+\newcommand*\colorIndex{%
+    \edef\@temp{\the\lst@token}%
+    \ifx\@temp\@lbracket \color{black}%
+    \else\ifx\@temp\@rbracket \color{black}%
+    \else\ifx\@temp\@colon \color{black}%
+    \else \color{vorange}%
+    \fi\fi\fi
+}
+\makeatother
+
+% Set graphics path
+\graphicspath{ {figures/} }
+
+% Reformat section headers
+\titleformat{\section}{\normalfont\Large\bfseries}{\S\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesection.\Alph{subsection}}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Define page header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Alice Seaborn}
+\rhead{May 9, 2020}
+\lfoot{ECE 482}
+\rfoot{Page \thepage}
+
